@@ -1,0 +1,358 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-rose">
+        <h4 class="card-title">Profile New Employees</h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="registerForm" autocomplete="off" novalidate>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <mat-label>Employee</mat-label>&nbsp;
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+                <mat-select formControlName="employee" id="employee" (selectionChange)="onSelectionChange($event)">
+                  <mat-option *ngFor="let employee of employees" [value]="employee.id">
+                    {{employee.name}}
+                  </mat-option>
+                </mat-select>
+                <br>
+                <mat-hint align="left" class="mat-hint-style">Employee is required</mat-hint>
+              </mat-form-field>
+
+            </div>
+            <!-- <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Adults" formControlName="adults" id="adults">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('adults', 'required')">Guest is required</mat-error>
+                <mat-error *ngIf="hasError('adults', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('adults', 'pattern')">Number of guests should be number</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Children" formControlName="children" id="children">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('children', 'required')">Children is required</mat-error>
+                <mat-error *ngIf="hasError('children', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('children', 'pattern')">Number of children should be number</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <!-- <div class="col-md-4">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <mat-label>Snapshot Type</mat-label>&nbsp; -->
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+
+                <!-- <br>
+                <mat-hint align="left" class="mat-hint-style">Snapshot Type is required</mat-hint>
+              </mat-form-field>
+
+            </div> -->
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+            <mat-horizontal-stepper #stepper>
+
+              <mat-step [stepControl]="stepsData[0].formGroup">
+                <form [formGroup]="stepsData[0].formGroup" novalidate>
+                  <ng-template matStepLabel>{{stepsData[0].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[0].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <mat-label>{{stepsData[0].booleanFieldLabel}}</mat-label>
+
+                      <section class="example-section">
+                        No<mat-slide-toggle [formControlName]="stepsData[0].formGroup.controls['firstCtrl']" id="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[0].formGroup.controls['firstCtrl'].value"
+                            [disabled]="disabled">
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                    <!-- <mat-select [value]="firstFormGroup.controls['firstCtrl'].value" [formControlName]="firstFormGroup.controls['firstCtrl']" id="firstCtrl" [disabled]="disabled">
+                      <mat-option [value]=false>
+                        NO
+                      </mat-option>
+                      <mat-option [value]=true>
+                        Yes
+                      </mat-option>
+                    </mat-select> -->
+                    <!-- <mat-radio-group [value]="stepsData[0].booleanFieldValue" formControlName="firstCtrl" id="firstCtrl" >
+                      <mat-radio-button  [value]=false>
+                        NO
+                        &nbsp;
+                      </mat-radio-button>
+                      <mat-radio-button  [value]=true>
+                        Yes
+                        &nbsp;
+                      </mat-radio-button>
+                    </mat-radio-group> -->
+                    <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                  <!-- </mat-form-field> -->
+                  </div>
+
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[0].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[0].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[0].nextButtonText">
+                      <button mat-flat-button color="primary" matStepperNext>{{stepsData[0].nextButtonText}}</button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="stepsData[1].formGroup">
+                <form [formGroup]="stepsData[1].formGroup">
+                  <ng-template matStepLabel>{{stepsData[1].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[1].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <mat-label>{{stepsData[1].booleanFieldLabel}}</mat-label>
+                      <!-- <h2 class="example-h2">Snapshot OK?</h2> -->
+
+                      <section class="example-section">
+                        No<mat-slide-toggle [formControlName]="stepsData[1].formGroup.controls['firstCtrl']" id="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[1].formGroup.controls['firstCtrl'].value"
+                            [disabled]="disabled">
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                    <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                  <!-- </mat-form-field> -->
+                  </div>
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[1].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[1].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[1].nextButtonText" >
+                      <button mat-flat-button color="primary" matStepperNext>{{stepsData[1].nextButtonText}}</button>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="stepsData[2].formGroup">
+                <form [formGroup]="stepsData[2].formGroup">
+                  <ng-template matStepLabel>{{stepsData[2].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[2].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <mat-label>{{stepsData[2].booleanFieldLabel}}</mat-label>
+                      <!-- <h2 class="example-h2">Snapshot OK?</h2> -->
+
+                      <section class="example-section">
+                        No<mat-slide-toggle [formControlName]="stepsData[2].formGroup.controls['firstCtrl']" id="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[2].formGroup.controls['firstCtrl'].value"
+                            [disabled]="disabled">
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                    <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                  <!-- </mat-form-field> -->
+                  </div>
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[2].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[2].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[2].nextButtonText">
+                      <button mat-flat-button color="primary" matStepperNext>{{stepsData[2].nextButtonText}}</button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="stepsData[3].formGroup">
+                <form [formGroup]="stepsData[3].formGroup">
+                  <ng-template matStepLabel>{{stepsData[3].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[3].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <mat-label>{{stepsData[3].booleanFieldLabel}}</mat-label>
+                      <!-- <h2 class="example-h2">Snapshot OK?</h2> -->
+
+                      <section class="example-section">
+                        No<mat-slide-toggle [formControlName]="stepsData[3].formGroup.controls['firstCtrl']" id="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[3].formGroup.controls['firstCtrl'].value"
+                            [disabled]="disabled">
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                    <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                  <!-- </mat-form-field> -->
+                  </div>
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[3].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[3].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[3].nextButtonText">
+                      <button mat-flat-button color="primary" matStepperNext>{{stepsData[3].nextButtonText}}</button>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="stepsData[4].formGroup">
+                <form [formGroup]="stepsData[4].formGroup">
+                  <ng-template matStepLabel>{{stepsData[4].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[4].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <mat-label>{{stepsData[4].booleanFieldLabel}}</mat-label>
+                      <!-- <h2 class="example-h2">Snapshot OK?</h2> -->
+
+                      <section class="example-section">
+                        No<mat-slide-toggle [formControlName]="stepsData[4].formGroup.controls['firstCtrl']" id="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[4].formGroup.controls['firstCtrl'].value"
+                            [disabled]="disabled">
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                    <!-- <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required> -->
+                  <!-- </mat-form-field> -->
+                  </div>
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[4].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[4].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[4].nextButtonText">
+                      <button mat-flat-button color="primary" matStepperNext>{{stepsData[4].nextButtonText}}</button>
+                    </div>
+                  </div>
+
+                </form>
+              </mat-step>
+              <mat-step [stepControl] = "stepsData[5].formGroup">
+                <!-- <ng-template matStepLabel>Done</ng-template>
+                <div class="row">
+
+                    <div class="col-md-10">
+                      <img id="image" src="https://via.placeholder.com/640x360">
+                    </div>
+                    <div class="col-md-2">
+                      <p>You are now done.</p>
+                    </div>
+
+                </div>
+                <div>
+                  <button mat-button mat-flat-button color="primary" matStepperPrevious>Back</button>
+                  <button mat-button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>
+                </div> -->
+
+                <form [formGroup]="stepsData[5].formGroup">
+                <ng-template matStepLabel>{{stepsData[5].label}}</ng-template>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <img id="image" src={{stepsData[5].imageData}}>
+                    </div>
+
+                  <!-- <mat-form-field> -->
+                    <div class="col-md-2">
+                      <p>You are now done.</p>
+
+                      <mat-label>{{stepsData[5].booleanFieldLabel}}</mat-label>
+                      <!-- <h2 class="example-h2">Snapshot OK?</h2> -->
+
+                      <section class="example-section">
+                        No<mat-slide-toggle formControlName="firstCtrl"
+                            class="example-margin"
+                            [color]="color"
+                            [checked]="stepsData[5].formGroup.controls['firstCtrl'].value"
+                            [disabled]="!stepsData[0].formGroup.valid
+                            && !stepsData[1].formGroup.valid && !stepsData[2].formGroup.valid
+                            && !stepsData[3].formGroup.valid && !stepsData[4].formGroup.valid" >
+
+                        </mat-slide-toggle>Yes
+                      </section>
+                    </div>
+                  </div>
+                  <div class="row col-md-9 justify-content-center">
+                    <div *ngIf="stepsData[5].prevButtonText">
+                      <button mat-flat-button color="primary" matStepperPrevious>{{stepsData[5].prevButtonText}}</button>
+                    </div>
+                    <div *ngIf="stepsData[5].nextButtonText">
+                      <button mat-flat-button color="primary" (click)="stepper.reset()">{{stepsData[5].nextButtonText}}</button>
+                    </div>
+                  </div>
+                </form>
+              </mat-step>
+            </mat-horizontal-stepper>
+            </div>
+          </div>
+          <div class="row ">
+            <div class="col-md-2">
+              <button mat-raised-button color="primary" (click)="takeSnapshot()">
+                Take Snapshot
+                <!-- <mat-icon>arrow_right_alt</mat-icon> -->
+              </button>
+            </div>
+
+            <div id="containerRTSP" class="col-md-8">
+              <canvas id="inputRTSP"></canvas>
+              <canvas id="overlayRTSP"></canvas>
+            </div>
+
+            <div class="col-md-2"> <!-- class="d-flex justify-content-end"> -->
+              <button mat-raised-button color="primary" [disabled]="!registerForm.valid || !stepsData[5].formGroup.valid" (click) = "submitProfile()">
+                Submit Profile
+                <!-- <mat-icon>arrow_right_alt</mat-icon> -->
+              </button>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

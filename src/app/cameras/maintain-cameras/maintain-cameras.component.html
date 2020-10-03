@@ -1,0 +1,178 @@
+<!--if open from tab control-->
+<table class="table" *ngIf="directOpen == false">
+  <tbody>
+    <tr>
+      <td>
+        <h4><b>Which Cam in which Department?</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!-- <form [formGroup]="registerForm" autocomplete="off" novalidate> -->
+          <!-- <section id="form" class=""> -->
+            <form [formGroup]="registerForm" autocomplete="off" novalidate>
+            <div class="row  example-full-width d-flex align-items-start ml-1 mr-1">
+
+            <div class="col-md-4 form-group">
+
+              <mat-form-field class="mt-1 mb-1">
+                <mat-label>IP Cam 1</mat-label>&nbsp;
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+                <mat-select formControlName="ipCam1" id="ipCam1">
+                  <mat-option *ngFor="let department of departments" [value]="department.id">
+                    {{department.name}}
+                  </mat-option>
+                </mat-select>
+                <br>
+                <mat-hint align="left" class="mat-hint-style">Department is required</mat-hint>
+              </mat-form-field>
+
+            </div>
+            <!-- <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Adults" formControlName="adults" id="adults">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('adults', 'required')">Guest is required</mat-error>
+                <mat-error *ngIf="hasError('adults', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('adults', 'pattern')">Number of guests should be number</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Children" formControlName="children" id="children">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('children', 'required')">Children is required</mat-error>
+                <mat-error *ngIf="hasError('children', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('children', 'pattern')">Number of children should be number</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <div class="col-md-4 form-group">
+              <mat-form-field class="mt-1 mb-1">
+                <mat-label>IP Cam 2</mat-label>&nbsp;
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+                <mat-select formControlName="ipCam2" id="ipCam2">
+                  <mat-option *ngFor="let department of departments" [value]="department.id">
+                    {{department.name}}
+                  </mat-option>
+                </mat-select>
+                <br>
+                <mat-hint align="left" class="mat-hint-style">Department is required</mat-hint>
+              </mat-form-field>
+
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-end ml-1 mr-1">
+            <button mat-raised-button color="primary" [disabled]="!registerForm.valid" class="mt-1 mb-1">
+              Tag Cameras
+              <mat-icon>arrow_right_alt</mat-icon>
+            </button>
+          </div>
+          <div class="clearfix"></div>
+
+
+    </form>
+      <!-- </section> -->
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!--if open from href-->
+<div class="main-content" *ngIf="directOpen == true">
+  <div class="container-fluid">
+
+    <div class="card">
+      <div class="card-header card-header-rose">
+        <h4 class="card-title">Where to next?</h4>
+      </div>
+
+      <div class="card-body">
+        <form [formGroup]="registerForm" autocomplete="off" novalidate>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <mat-label>IP Cam 1</mat-label>&nbsp;
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+                <mat-select formControlName="ipCam1" id="ipCam1">
+                  <mat-option *ngFor="let department of departments" [value]="department.id">
+                    {{department.name}}
+                  </mat-option>
+                </mat-select>
+                <br>
+                <mat-hint align="left" class="mat-hint-style">Department is required</mat-hint>
+              </mat-form-field>
+
+            </div>
+            <!-- <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Adults" formControlName="adults" id="adults">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('adults', 'required')">Guest is required</mat-error>
+                <mat-error *ngIf="hasError('adults', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('adults', 'pattern')">Number of guests should be number</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-2">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <input matInput type="text" placeholder="Numbetr of Children" formControlName="children" id="children">
+                <mat-hint align="left">Not more then 2 digits.</mat-hint>
+                <mat-error *ngIf="hasError('children', 'required')">Children is required</mat-error>
+                <mat-error *ngIf="hasError('children', 'maxlength')">You have more than 2 digits</mat-error>
+                <mat-error *ngIf="hasError('children', 'pattern')">Number of children should be number</mat-error>
+              </mat-form-field>
+            </div> -->
+
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width d-flex align-items-start">
+                <mat-label>IP Cam 2</mat-label>&nbsp;
+                <!-- <mat-radio-group formControlName="travelClass" id="travelClass">
+                  <mat-radio-button *ngFor="let item of travelClasstType" [value]="item.value">
+                    {{item.option}}
+                    &nbsp;
+                  </mat-radio-button>
+                </mat-radio-group> -->
+                <mat-select formControlName="ipCam2" id="ipCam1">
+                  <mat-option *ngFor="let department of departments" [value]="department.id">
+                    {{department.name}}
+                  </mat-option>
+                </mat-select>
+                <br>
+                <mat-hint align="left" class="mat-hint-style">Department is required</mat-hint>
+              </mat-form-field>
+
+            </div>
+
+          </div>
+          <div class="d-flex justify-content-end">
+            <button mat-raised-button color="primary" [disabled]="!registerForm.valid">
+              Tag Cameras
+              <mat-icon>arrow_right_alt</mat-icon>
+            </button>
+          </div>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

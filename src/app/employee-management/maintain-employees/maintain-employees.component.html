@@ -1,0 +1,139 @@
+<!--if open from tab control-->
+<table class="table" *ngIf="directOpen == false">
+  <tbody>
+    <tr>
+      <td>
+        <h4><b>Refresh Employee data?</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <section id="form" class="example-full-width d-flex align-items-start">
+          <div class="col-md-4">
+            <div class="mt-1">
+              <mat-label>Download sample CSV file</mat-label>
+            <div class="d-flex justify-content-end">
+              <button mat-raised-button (click)="download()" color="primary" class="mt-1 mb-1"
+              >Download <mat-icon>table_view</mat-icon></button>
+            </div>
+            <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="container col-md-8">
+            <form [formGroup]="empForm" (ngSubmit)="submit()">
+              <div class="form-group" class="mt-1 mb-1">
+                <mat-label>Uploader Email address</mat-label>
+                <input matInput type="email" class="form-control" formControlName="email"
+                placeholder="Email">
+                <!-- <div class="invalid-feedback" style="display: block"> -->
+                  <mat-error *ngIf="hasError('email', 'required')">This field is required</mat-error>
+                  <mat-error *ngIf="hasError('email', 'email')">Please enter a valid email address</mat-error>
+                <!-- </div> -->
+              </div>
+              <!-- <div class="form-group"> -->
+                <app-file-upload #fileupload formControlName="empdata" [progress]="progress"></app-file-upload>
+                <!-- <div class="invalid-feedback" style="display: block"> -->
+                  <mat-error *ngIf="hasError('empdata', 'required')">This field is required</mat-error>
+                  <mat-error *ngIf="hasError('empdata', 'requiredFileType')">Only CSV 🤡</mat-error>
+                <!-- </div> -->
+              <!-- </div> -->
+
+              <!-- <div class="d-flex justify-content-end"> -->
+                <button mat-raised-button type="submit" color="primary" class="mt-1 mb-1"
+                [disabled]="!empForm.valid" >Upload <mat-icon>cloud_upload</mat-icon></button>
+              <!-- </div> -->
+              <!-- <div class="clearfix"></div> -->
+            </form>
+          </div>
+        </section>
+        <!-- <mat-tab-group dynamicHeight>
+          <mat-tab label="Webcam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Client => Processing] [Client => Streaming]</label>
+            </div>
+            <div class="example-small-box mat-elevation-z4">
+              <div id="feCam">
+                <div id="container">
+                  <video (play) = "onPlay(this)" id="inputVideo" autoplay muted></video>
+                  <canvas id="overlay"></canvas>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startCam()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopCam()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Webcam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Server => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-small-box mat-elevation-z4">
+              <div id="beCam">
+                <div id="container">
+                  <img id="image"/>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startStreaming()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopStreaming()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Dep Cam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Client => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-large-box mat-elevation-z4">
+              <div id="rtspCam">
+                <div id="containerRTSP">
+                  <canvas id="inputRTSP"></canvas>
+                  <canvas id="overlayRTSP"></canvas>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startRTSP()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopRTSP()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Dep Cam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Server => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-extra-large-box mat-elevation-z4">
+              <div id="onvifCam">
+                <div id="containerOnvif">
+                  <img id="onvifImage"/>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startOnvifStreaming()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopOnvifStreaming()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group> -->
+      </td>
+
+    </tr>
+    <div class="clearfix"></div>
+  </tbody>
+</table>
+
+<!--if open from href-->
+<div class="main-content" *ngIf="directOpen == true">
+  <div class="container-fluid">
+
+    <div class="card">
+      <div class="card-header card-header-rose">
+        <h4 class="card-title">Live View</h4>
+      </div>
+      <div class="card-body">
+
+      </div>
+
+    </div>
+
+</div>
+</div>

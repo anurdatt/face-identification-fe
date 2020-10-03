@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.wait {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, .8) url('./assets/images/ajax-loader.gif') 50% 50% no-repeat;
+  opacity: 0.80;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  filter: alpha(opacity=80)
+}
+
+.mat-dialog-container {
+   padding: 0 0 24px 0 !important;
+   overflow-x: hidden !important;
+   overflow-y: hidden !important;
+}
+.mat-dialog-title {
+  margin: 0 0 0 !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  height: 30px !important;
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-dialog-content {
+  margin: 0 0 0 !important;
+  padding: 5px 5px 5px 5px !important;
+}
+.mat-dialog-actions {
+  justify-content: flex-end;
+}

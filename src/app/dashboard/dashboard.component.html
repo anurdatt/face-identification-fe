@@ -1,0 +1,143 @@
+<!-- <p>dashboard works!</p> -->
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">people</i>
+                        </div>
+                        <p class="card-category">&nbsp;</p>
+                        <p class="card-title">Employee Management</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="javascript:void(0)" routerLink="/admin/employee-management/profile" class="text-danger">
+                                <h5>Profile new employees</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">camera</i>
+                        </div>
+                        <p class="card-category">&nbsp;</p>
+                        <p class="card-title">Cameras</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <a href="javascript:void(0)" routerLink="/admin/cameras/view/department/1" class="text-danger">
+                                <h5>View cameras by department</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-tabs card-header-primary">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <span class="nav-tabs-title">Maintain:</span>
+                                <ul class="nav nav-tabs" data-tabs="tabs">
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link active" href="#employeeMaintain" data-toggle="tab">
+                                            <i class="material-icons">people</i> Employees
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a mat-button class="nav-link" href="#cameraMaintain" data-toggle="tab">
+                                            <i class="material-icons">camera</i> Cameras
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="employeeMaintain">
+                                <app-maintain-employees [directOpen]="false"></app-maintain-employees>
+                            </div>
+                            <div class="tab-pane" id="cameraMaintain">
+                                <app-maintain-cameras [directOpen]="false"></app-maintain-cameras>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-14">
+            <div class="card">
+                <!-- <div class="card-header card-header-tabs card-header-primary"> -->
+                <div class="card-header">
+                  <div><b>Authorized Entries</b></div>
+                </div>
+                <div class="card-body">
+                  <mat-form-field>
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                  </mat-form-field>
+
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+                      <!-- ID Column -->
+                      <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                        <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                      </ng-container>
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+                      </ng-container>
+
+                      <!-- Detartment Column -->
+                      <ng-container matColumnDef="department">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                        <td mat-cell *matCellDef="let row"> {{row.department}} </td>
+                      </ng-container>
+
+                      <!-- Entry Time Column -->
+                      <ng-container matColumnDef="entry_time">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Entry Time </th>
+                        <!-- <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td> -->
+                        <td mat-cell *matCellDef="let row"> {{row.entry_time}} </td>
+                      </ng-container>
+
+                      <!-- Exit Time Column -->
+                      <ng-container matColumnDef="exit_time">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Exit Time </th>
+                        <td mat-cell *matCellDef="let row"> {{row.exit_time}} </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                      <!-- Row shown when there is no matching data. -->
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                      </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+// .mat-form-field {
+//   margin-top: 16px;
+// }
+
+#image
+ {
+  width: 640px;
+  height: 360px;
+  background-color: black;
+}
+
+#containerRTSP
+ {
+  width: 640px;
+  height: 360px;
+  background-color: black;
+  position: relative;
+}
+
+#inputRTSP, #overlayRTSP {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 10px;
+}

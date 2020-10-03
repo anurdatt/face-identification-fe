@@ -1,0 +1,194 @@
+<!--if open from tab control-->
+<table class="table" *ngIf="directOpen == false">
+  <tbody>
+    <tr>
+      <td>
+        <h4><b>Live View</b></h4>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-tab-group dynamicHeight>
+          <mat-tab label="Webcam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Client => Processing] [Client => Streaming]</label>
+            </div>
+            <div class="example-small-box mat-elevation-z4">
+              <div id="feCam">
+                <div id="container">
+                  <video (play) = "onPlay(this)" id="inputVideo" autoplay muted></video>
+                  <canvas id="overlay"></canvas>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startCam()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopCam()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Webcam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Server => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-small-box mat-elevation-z4">
+              <div id="beCam">
+                <div id="container">
+                  <img id="image"/>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startStreaming()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopStreaming()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Dep Cam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Client => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-large-box mat-elevation-z4">
+              <div id="rtspCam">
+                <div id="containerRTSP">
+                  <canvas id="inputRTSP"></canvas>
+                  <canvas id="overlayRTSP"></canvas>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startRTSP()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopRTSP()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Dep Cam">
+            <div style="display: flex; margin-left: 16px;">
+              <label>[Server => Procesing] [Server => Streaming]</label>
+            </div>
+            <div class="example-extra-large-box mat-elevation-z4">
+              <div id="onvifCam">
+                <div id="containerOnvif">
+                  <img id="onvifImage"/>
+                </div>
+                <div class="mt-1 d-flex justify-content-center">
+                  <button mat-mini-fab (click) = "startOnvifStreaming()"><mat-icon>play_arrow</mat-icon></button>
+                  <button mat-mini-fab (click) = "stopOnvifStreaming()"><mat-icon>stop</mat-icon></button>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!--if open from href-->
+<div class="main-content" *ngIf="directOpen == true">
+  <div class="container-fluid">
+
+    <div class="card">
+      <div class="card-header card-header-rose">
+        <h4 class="card-title">Live View</h4>
+      </div>
+
+      <div class="card-body">
+
+    <mat-tab-group dynamicHeight>
+      <mat-tab label="Webcam">
+        <div style="display: flex; margin-left: 16px;">
+          <label>[Client => Processing] [Client => Streaming]</label>
+        </div>
+        <div class="example-small-box mat-elevation-z4">
+          <div id="feCam">
+            <div id="container">
+              <video (play) = "onPlay(this)" id="inputVideo" autoplay muted></video>
+              <canvas id="overlay"></canvas>
+            </div>
+            <div class="mt-1 d-flex justify-content-center">
+              <button mat-mini-fab (click) = "startCam()"><mat-icon>play_arrow</mat-icon></button>
+              <button mat-mini-fab (click) = "stopCam()"><mat-icon>stop</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Webcam">
+        <div style="display: flex; margin-left: 16px;">
+          <label>[Server => Procesing] [Server => Streaming]</label>
+        </div>
+        <div class="example-small-box mat-elevation-z4">
+          <div id="beCam">
+            <div id="container">
+              <img id="image"/>
+            </div>
+            <div class="mt-1 d-flex justify-content-center">
+              <button mat-mini-fab (click) = "startStreaming()"><mat-icon>play_arrow</mat-icon></button>
+              <button mat-mini-fab (click) = "stopStreaming()"><mat-icon>stop</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Dep Cam">
+        <div style="display: flex; margin-left: 16px;">
+          <label>[Client => Procesing] [Server => Streaming]</label>
+        </div>
+        <div class="example-large-box mat-elevation-z4">
+          <div id="rtspCam">
+            <div id="containerRTSP">
+              <canvas id="inputRTSP"></canvas>
+              <canvas id="overlayRTSP"></canvas>
+            </div>
+            <div class="mt-1 d-flex justify-content-center">
+              <button mat-mini-fab (click) = "startRTSP()"><mat-icon>play_arrow</mat-icon></button>
+              <button mat-mini-fab (click) = "stopRTSP()"><mat-icon>stop</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Dep Cam">
+        <div style="display: flex; margin-left: 16px;">
+          <label>[Server => Procesing] [Server => Streaming]</label>
+        </div>
+        <div class="example-extra-large-box mat-elevation-z4">
+          <div id="onvifCam">
+            <div id="containerOnvif">
+              <img id="onvifImage"/>
+            </div>
+            <div class="mt-1 d-flex justify-content-center">
+              <button mat-mini-fab (click) = "startOnvifStreaming()"><mat-icon>play_arrow</mat-icon></button>
+              <button mat-mini-fab (click) = "stopOnvifStreaming()"><mat-icon>stop</mat-icon></button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+      <!-- <div class="row">
+        <div class="col-lg-4 mt-1 d-flex justify-content-center text-center">
+          <b>From Backend</b>
+        </div>
+        <div class="col-lg-4 mt-1 d-flex justify-content-center text-center">
+          <b>From Frontend</b>
+        </div>
+      </div>
+      <div class="row">
+        <img id="image" class="col-lg-4"/>
+        <div id="container" class="col-lg-4 margin ml-5">
+          <video (play) = "onPlay(this)" id="inputVideo" autoplay muted></video>
+          <canvas id="overlay"></canvas>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 mt-1 d-flex justify-content-center">
+          <button mat-mini-fab (click) = "startStreaming()"><mat-icon>play_arrow</mat-icon></button>
+          <button mat-mini-fab (click) = "stopStreaming()"><mat-icon>stop</mat-icon></button>
+        </div>
+        <div class="col-lg-4 mt-1 d-flex justify-content-center">
+          <button mat-mini-fab (click) = "startCam()"><mat-icon>play_arrow</mat-icon></button>
+          <button mat-mini-fab (click) = "stopCam()"><mat-icon>stop</mat-icon></button>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+
+</div>
+</div>
