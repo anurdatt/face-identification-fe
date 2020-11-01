@@ -8,18 +8,18 @@
     </tr>
     <tr>
       <td>
-        <section id="form" class="example-full-width d-flex align-items-start">
-          <div class="col-md-4">
+        <section id="form" class="row">
+          <div class="col-lg-3 col-md-4 col-sm-4">
             <div class="mt-1">
               <mat-label>Download sample CSV file</mat-label>
-            <div class="d-flex justify-content-end">
-              <button mat-raised-button (click)="download()" color="primary" class="mt-1 mb-1"
-              >Download <mat-icon>table_view</mat-icon></button>
-            </div>
-            <div class="clearfix"></div>
+              <div class="d-flex justify-content-end">
+                <button mat-raised-button (click)="download()" color="primary" class="mt-1 mb-1"
+                >Download <mat-icon>table_view</mat-icon></button>
+              </div>
+            <!-- <div class="clearfix"></div> -->
             </div>
           </div>
-          <div class="container col-md-8">
+          <div class=" col-lg-6 col-md-8 col-sm-8">
             <form [formGroup]="empForm" (ngSubmit)="submit()">
               <div class="form-group" class="mt-1 mb-1">
                 <mat-label>Uploader Email address</mat-label>
